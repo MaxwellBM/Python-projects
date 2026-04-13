@@ -1,0 +1,23 @@
+{
+  "login": {
+    "success": true,
+    "message": "Login exitoso"
+  },
+  "table": {
+    "rows_extracted": 4,
+    "sample": {
+      "last_name": "Smith",
+      "first_name": "John",
+      "email": "jsmith@gmail.com",
+      "due": "$50.00",
+      "web_site": "http://www.jsmith.com",
+      "action": "edit delete"
+    }
+  },
+  "alerts": {
+    "error": "Message: no such alert\n  (Session info: chrome=147.0.7727.55)\nStacktrace:\n\tchromedriver!GetHandleVerifier [0x7ff66ee70295+146d5]\n\tchromedriver!GetHandleVerifier [0x7ff66ee70300+14740]\n\tchromedriver!(No symbol) [0x7ff66ebdd5b6]\n\tchromedriver!(No symbol) [0x7ff66ebcc344]\n\tchromedriver!(No symbol) [0x7ff66ec06f94]\n\tchromedriver!(No symbol) [0x7ff66ec5ffed]\n\tchromedriver!(No symbol) [0x7ff66ec06e15]\n\tchromedriver!(No symbol) [0x7ff66ec29018]\n\tchromedriver!(No symbol) [0x7ff66ec29f03]\n\tchromedriver!GetHandleVerifier [0x7ff66f185949+329d89]\n\tchromedriver!GetHandleVerifier [0x7ff66f17fe96+3242d6]\n\tchromedriver!GetHandleVerifier [0x7ff66f1a3102+347542]\n\tchromedriver!GetHandleVerifier [0x7ff66ee8d425+31865]\n\tchromedriver!GetHandleVerifier [0x7ff66ee9605c+3a49c]\n\tchromedriver!GetHandleVerifier [0x7ff66ee79684+1dac4]\n\tchromedriver!GetHandleVerifier [0x7ff66ee79836+1dc76]\n\tchromedriver!GetHandleVerifier [0x7ff66ee5e347+2787]\n\tKERNEL32!BaseThreadInitThunk [0x7ffc2ca9e8d7+17]\n\tntdll!RtlUserThreadStart [0x7ffc2e52c48c+2c]\n"
+  },
+  "report": {
+    "saved": true
+  }
+}

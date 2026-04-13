@@ -1,0 +1,73 @@
+name: RPA CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 9 * * 1-5"  # Lunes a viernes a las 9am UTC
+
+jobs:
+  test:
+    name: Tests & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Instalar dependencias
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov flake8
+
+      - name: Lint
+        run: flake8 src/ --max-line-length=100 --ignore=E501,W503
+
+      - name: Tests (sin Chrome real)
+        run: pytest tests/ -v --cov=src --cov-report=term-missing --cov-fail-under=65
+
+  run-rpa:
+    name: Ejecutar automatización
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'schedule'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Instalar Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Instalar ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar RPA
+        run: |
+          cd src
+          python main.py
+
+      - name: Subir artefactos (Excel + Screenshots)
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpa-output
+          path: |
+            data/
+            screenshots/
+          retention-days: 7

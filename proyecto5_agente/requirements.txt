@@ -1,0 +1,7 @@
+anthropic==0.28.0
+python-telegram-bot==21.3
+python-dotenv==1.0.1
+requests==2.31.0
+pytest==8.2.0
+pytest-cov==5.0.0
+flake8==7.0.0
